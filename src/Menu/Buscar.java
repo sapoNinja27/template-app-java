@@ -31,8 +31,10 @@ public class Buscar {
 			Main.menu.resetar();
 			Main.botoes.remove(voltar);
 		}
+		
 		if (edit.clicou()) {
 			Main.menu.state = "Editar";
+			Main.menu.editar= new Editar(tab.getSelecionado());
 			Main.menu.resetar();
 			Main.botoes.remove(edit);
 		}

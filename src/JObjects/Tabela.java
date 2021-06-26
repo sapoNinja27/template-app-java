@@ -26,7 +26,9 @@ public class Tabela {
 	public String getTexto(int id) {
 		return text.get(id);
 	}
-
+	public Integer getSelecionado() {
+		return selecionado;
+	}
 	public void setTexto(String text, int id) {
 		this.text.add(text);
 		this.clicou.add(false);

@@ -51,12 +51,12 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 
 	public Main() {
 		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo1","genero1"));
+		jogos.add(new Jogo("jogo2","genero2"));
+		jogos.add(new Jogo("jogo3","genero3"));
+		jogos.add(new Jogo("jogo4","genero4"));
+		jogos.add(new Jogo("jogo5","genero5"));
+		jogos.add(new Jogo("jogo6","genero6"));
+		jogos.add(new Jogo("jogo7","genero7"));
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);

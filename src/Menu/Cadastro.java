@@ -14,7 +14,6 @@ import JObjects.Tabela;
 import Main.Main;
 
 public class Cadastro {
-	private boolean erro;
 	Botao adicionar = new Botao(550, 240, 97, 20, "Adicionar", Color.white, 2, 15);
 	Botao voltar = new Botao(550, 270, 97, 20, "Voltar", Color.white, 2, 15);
 
@@ -49,7 +48,7 @@ public class Cadastro {
 			Main.botoes.remove(voltar);
 		}
 		if (adicionar.clicou()) {
-			selectedJogo=jogos.getJogo();
+			selectedJogo=Main.jogos.get(jogos.getSelecionado());
 			Usuario user= new Usuario("zapelop", "senha mane");
 			Main.fichas.add(new Ficha(user,new Personagem(nome.getTexto(),
 					Integer.valueOf(nivel.getTexto()), descricao.getTexto()),

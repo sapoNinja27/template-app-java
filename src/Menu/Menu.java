@@ -18,7 +18,7 @@ import Main.Main;
 public class Menu {
 	private Login login = new Login();
 	public Buscar busca = new Buscar();
-	public Editar editar = new Editar();
+	public Editar editar ;
 	private Cadastro cad = new Cadastro();
 	private Color beje;
 	String state = "Login";
