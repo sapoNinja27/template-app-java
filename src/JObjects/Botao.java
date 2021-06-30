@@ -7,7 +7,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Main.Main;
-
+/**
+ * Botão modificavel
+ *
+ */
 public class Botao {
 	private int x, y, w, h, aw, ah;
 	private Color cor;
@@ -18,7 +21,28 @@ public class Botao {
 	private int font;
 	private boolean clicou;
 	private int mx, my;
-
+	/**
+	 * Cria um botão
+	 *@param x : posição horizontal 
+	 *@param y : posição vertical 
+	 *@param width : tamanho horizontal 
+	 *@param height : tamanho vertical
+	 */
+	public Botao(int x, int y, int w, int h) {
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+	}
+	/**
+	 * Ajusta quão circular é o botão, o padrão é 0
+	 *@param w : Valor de "rounded" horizontal
+	 *@param h : Valor de "rounded" vertical
+	 */
+	public void setRound(int w, int h) {
+		this.aw = w;
+		this.ah = h;
+	}
 	public Botao(int x, int y, int w, int h, int aw, int ah, String text, Color cor, int borda, int font) {
 		this.x = x;
 		this.y = y;
@@ -31,7 +55,6 @@ public class Botao {
 		this.borda = borda;
 		this.font = font;
 	}
-
 	public boolean clicou() {
 		return clicou;
 	}

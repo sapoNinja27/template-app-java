@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import Entidades.Jogo;
 import Main.Main;
 
 public class Tabela {
@@ -33,10 +32,6 @@ public class Tabela {
 		this.text.add(text);
 		this.clicou.add(false);
 	}
-	public Jogo getJogo() {
-		String[] pal=getTexto(selecionado).split(" ");
-		return new Jogo(pal[0],pal[1]);
-	}
 	public boolean mouseOver() {
 		return mouseOver;
 	}
@@ -44,7 +39,6 @@ public class Tabela {
 	public void clicou() {
 		for (int i = 0; i < clicou.size(); i++) {
 			if(clicou.get(i)) {
-				Main.menu.busca.id= i;
 				selecionado=i;
 			}
 		}

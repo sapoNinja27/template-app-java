@@ -24,8 +24,6 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import Entidades.Ficha;
-import Entidades.Jogo;
 import JObjects.Botao;
 import JObjects.CampoDeTexto;
 import Menu.Menu;
@@ -42,21 +40,11 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	public static final int HEIGHT = 90 * 4;
 	public static final int SCALE = 1;
 	private BufferedImage image;
-	public static List<Jogo> jogos=new ArrayList<Jogo>();
-	public static List<Ficha> fichas=new ArrayList<Ficha>();
 	public static Random rand;
-	public static String gameState = "MENU";
 	public static Menu menu;
 	private boolean caps;
 
 	public Main() {
-		jogos.add(new Jogo("jogo1","genero1"));
-		jogos.add(new Jogo("jogo2","genero2"));
-		jogos.add(new Jogo("jogo3","genero3"));
-		jogos.add(new Jogo("jogo4","genero4"));
-		jogos.add(new Jogo("jogo5","genero5"));
-		jogos.add(new Jogo("jogo6","genero6"));
-		jogos.add(new Jogo("jogo7","genero7"));
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
@@ -115,7 +103,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	}
 
 	public void initFrame() {
-		frame = new JFrame("Gerenciador");
+		frame = new JFrame("Sistema");
 		frame.add(this);
 		frame.setResizable(false);
 		frame.pack();
