@@ -8,20 +8,38 @@ import java.awt.Graphics2D;
 
 import Main.Main;
 
+/**
+ * Caixa De Checagem
+ * 
+ * @apiNote : cria um pequeno botão selecionavel, que muda de estado ao clique
+ */
 public class CheckBox {
 	private int x, y, mx, my;
 	private boolean mouseOver, mousePressed, clicouDentro;
 	private boolean clicou;
 
+	/**
+	 * Cria a caixa de checagem
+	 * 
+	 * @param x : posição horizontal
+	 * @param y : posição vertical
+	 */
 	public CheckBox(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * Checa se esta marcada ou não
+	 */
 	public boolean checked() {
 		return clicou;
 	}
 
+	/**
+	 * Funções tick são chamadas indefinidamente durante a aplicação atualiza a
+	 * posição do mouse em relação ao objeto
+	 */
 	public void tick() {
 		mx = Main.menu.getMouseX();
 		my = Main.menu.getMouseY();
@@ -56,6 +74,11 @@ public class CheckBox {
 		}
 	}
 
+	/**
+	 * Renderiza o objeto
+	 * 
+	 * @param g : tipo grafico do java instanciado no main
+	 */
 	public void render(Graphics g) {
 		tick();
 		int borda = 1;

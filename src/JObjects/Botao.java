@@ -7,13 +7,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Main.Main;
+
 /**
- * Botão modificavel
- *
+ * Botão
+ * 
+ * @apiNote : Cria um botão customizavel mais simples de modificar
  */
 public class Botao {
 	private int x, y, w, h, aw, ah;
-	private Color cor;
+	private Color cor = Color.white;
 	private String text;
 	private boolean mouseOver, mousePressed;
 	private boolean mouseFora = true;
@@ -21,12 +23,14 @@ public class Botao {
 	private int font;
 	private boolean clicou;
 	private int mx, my;
+
 	/**
 	 * Cria um botão
-	 *@param x : posição horizontal 
-	 *@param y : posição vertical 
-	 *@param width : tamanho horizontal 
-	 *@param height : tamanho vertical
+	 * 
+	 * @param x      : posição horizontal
+	 * @param y      : posição vertical
+	 * @param width  : tamanho horizontal
+	 * @param height : tamanho vertical
 	 */
 	public Botao(int x, int y, int w, int h) {
 		this.x = x;
@@ -34,31 +38,19 @@ public class Botao {
 		this.w = w;
 		this.h = h;
 	}
-	/**
-	 * Ajusta quão circular é o botão, o padrão é 0
-	 *@param w : Valor de "rounded" horizontal
-	 *@param h : Valor de "rounded" vertical
-	 */
-	public void setRound(int w, int h) {
-		this.aw = w;
-		this.ah = h;
-	}
-	public Botao(int x, int y, int w, int h, int aw, int ah, String text, Color cor, int borda, int font) {
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
-		this.aw = aw;
-		this.ah = ah;
-		this.text = text;
-		this.cor = cor;
-		this.borda = borda;
-		this.font = font;
-	}
-	public boolean clicou() {
-		return clicou;
-	}
 
+	/**
+	 * Cria um botão mais elaborado
+	 * 
+	 * @param x      : posição horizontal
+	 * @param y      : posição vertical
+	 * @param width  : tamanho horizontal
+	 * @param height : tamanho vertical
+	 * @param text   : texto do botão
+	 * @param cor    : cor do botão
+	 * @param borda  : tamanho da borda
+	 * @param font   : tamanho da fonte
+	 */
 	public Botao(int x, int y, int w, int h, String text, Color cor, int borda, int font) {
 		this.x = x;
 		this.y = y;
@@ -70,15 +62,80 @@ public class Botao {
 		this.font = font;
 	}
 
+	/**
+	 * Ajusta quão redondo é o botão, o padrão é 0
+	 * 
+	 * @param w : Valor de "rounded" horizontal
+	 * @param h : Valor de "rounded" vertical
+	 */
+	public void setRound(int w, int h) {
+		this.aw = w;
+		this.ah = h;
+	}
+
+	/**
+	 * Adiciona o texto do botão
+	 * 
+	 * @param text : texto
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	/**
+	 * Adiciona a cor do botão, o padrão é branco
+	 * 
+	 * @param cor : cor
+	 */
+	public void setCor(Color cor) {
+		this.cor = cor;
+	}
+
+	/**
+	 * Aumenta a grossura da borda
+	 * 
+	 * @param borda : tamanho da borda
+	 */
+	public void setBorda(int borda) {
+		this.borda = borda;
+	}
+
+	/**
+	 * Modifica o tamanho da font
+	 * 
+	 * @param font : tamanho da fonte
+	 */
+	public void setFontSize(int font) {
+		this.font = font;
+	}
+
+	/**
+	 * Retorna verdadeiro quando o botão é pressionado
+	 */
+	public boolean clicou() {
+		return clicou;
+	}
+
+	/**
+	 * Retorna verdadeiro quando o mouse esta acima do botão
+	 */
 	public boolean mouseOver() {
 		return !mouseFora;
 	}
 
+	/**
+	 * Redefine o botão (utilizado quando é nescessario trocar a pagina que ele esta
+	 * instanciado)
+	 */
 	public void off() {
 		clicou = false;
 		mouseFora = true;
 	}
 
+	/**
+	 * Funções tick são chamadas indefinidamente durante a aplicação atualiza a
+	 * posição do mouse em relação ao objeto
+	 */
 	public void tick() {
 		mx = Main.menu.getMouseX();
 		my = Main.menu.getMouseY();
@@ -115,6 +172,11 @@ public class Botao {
 		}
 	}
 
+	/**
+	 * Renderiza o objeto
+	 * 
+	 * @param g : tipo grafico do java instanciado no main
+	 */
 	public void render(Graphics g) {
 		tick();
 		Graphics2D g2 = (Graphics2D) g;

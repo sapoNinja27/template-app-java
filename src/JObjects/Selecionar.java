@@ -7,7 +7,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Main.Main;
-
+/**
+ * Botão Select
+ * @apiNote essa classe é uma copia do campo de texto sem funcionalidade ainda
+ */
 public class Selecionar {
 	private int x,y,w,h,aw,ah;
 	private Color cor;

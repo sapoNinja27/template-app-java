@@ -7,7 +7,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import Main.Main;
-
+/**
+ * Botão radio
+ * @apiNote essa classe é uma copia do checkbox sem funcionalidade ainda
+ */
 public class RadioButton {
 	private int x,y,mx,my;
 	private boolean mouseOver,mousePressed,clicouDentro;
