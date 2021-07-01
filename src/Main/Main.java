@@ -6,6 +6,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -163,7 +164,8 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		Graphics g = image.getGraphics();
 		g.setColor(new Color(0, 0, 0));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
-		menu.render(g);
+		Graphics2D g2=(Graphics2D) g;
+		menu.render(g,g2);
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);
