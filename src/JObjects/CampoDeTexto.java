@@ -12,6 +12,8 @@ import Main.Main;
  * @apiNote : campo de texto customizavel com algumas mascaras, tambem é
  *          possivel modificar o tamanho e usar como uma caixa de texto, aceita
  *          senhas e texto modelo
+ * @apiNote Configurações do objeto assim como sua inclusão na lista do main são
+ *          feitas no init() da pagina
  */
 public class CampoDeTexto {
 	private int x, y, w, h;

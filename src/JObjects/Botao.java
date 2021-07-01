@@ -11,7 +11,9 @@ import Main.Main;
 /**
  * Botão
  * 
- * @apiNote : Cria um botão customizavel mais simples de modificar
+ * @apiNote Cria um botão customizavel mais simples de modificar
+ * @apiNote Configurações do objeto assim como sua inclusão na lista do main são
+ *          feitas no init() da pagina
  */
 public class Botao {
 	private int x, y, w, h, aw, ah;

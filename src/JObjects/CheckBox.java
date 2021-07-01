@@ -12,6 +12,7 @@ import Main.Main;
  * Caixa De Checagem
  * 
  * @apiNote : cria um pequeno botão selecionavel, que muda de estado ao clique
+ * @apiNote Configurações do objeto são feitas no init() da pagina
  */
 public class CheckBox {
 	private int x, y, mx, my;

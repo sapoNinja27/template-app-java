@@ -13,6 +13,7 @@ import Main.Main;
  * 
  * @apiNote Recebe uma lista de textos e os mostra na tela com uma tabela
  *          simples
+ * @apiNote Configurações do objeto são feitas no init() da pagina
  */
 public class Tabela {
 	private int x, y, w, h;

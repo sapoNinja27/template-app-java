@@ -130,11 +130,11 @@ public class Menu {
 		beje = new Color(211, 228, 255);
 		g.setColor(beje);
 		g.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
-		g2.setColor(beje);
 		if (state.equals("Menu")) {
 			g.setColor(Color.DARK_GRAY);
 			g.setFont(new Font("arial", Font.BOLD, 30));
 			g.drawString("Template de menu", 50, 40);
+			sair.render(g);
 		}
 
 	}
