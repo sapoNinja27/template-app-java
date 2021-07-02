@@ -118,8 +118,23 @@ public class CampoDeTexto {
 	 * Função backspace
 	 */
 	public void removeLetra() {
-		newText = newText.substring(0, newText.length() - 1);
-		textoSenha = textoSenha.substring(0, textoSenha.length() - 1);
+		if(senha) {
+			if(textoSenha.length()==0) {
+				
+			}else if(textoSenha.length()==1) {
+				textoSenha = "";
+			}else {
+				textoSenha = textoSenha.substring(0, textoSenha.length() - 1);
+			}
+		}else {
+			if(newText.length()==0) {
+				
+			}else if(newText.length()==1) {
+				newText = "";
+			}else {
+				newText = newText.substring(0, newText.length() - 1);
+			}
+		}
 	}
 
 	/**

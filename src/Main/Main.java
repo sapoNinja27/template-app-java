@@ -60,6 +60,10 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	public static Random rand;
 	public static Menu menu;
 	private boolean caps;
+	private boolean til;
+	private boolean agudo;
+	private boolean circ;
+	private boolean shift;
 
 	/**
 	 * Inicia as propriedades do aplicativo
@@ -243,6 +247,10 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	 * @apiNote apenas teclas basicas adicionadas
 	 */
 	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+			shift = true;
+			caps = true;
+		}
 		if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
@@ -252,6 +260,16 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		}
 		if (e.getKeyCode() == KeyEvent.VK_CAPS_LOCK) {
 			caps = !caps;
+		}
+		if (e.getKeyCode() == 131) {
+			if (shift) {
+				circ = true;
+			} else {
+				til = true;
+			}
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DEAD_ACUTE) {
+			agudo = true;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_TAB) {
 			int i = 0;
@@ -270,70 +288,70 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 				i = 0;
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_0) {
+		if (e.getKeyCode() == KeyEvent.VK_0 || e.getKeyCode() == KeyEvent.VK_NUMPAD0) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("0");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_1) {
+		if (e.getKeyCode() == KeyEvent.VK_1 || e.getKeyCode() == KeyEvent.VK_NUMPAD1) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("1");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_2) {
+		if (e.getKeyCode() == KeyEvent.VK_2 || e.getKeyCode() == KeyEvent.VK_NUMPAD2) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("2");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_3) {
+		if (e.getKeyCode() == KeyEvent.VK_3 || e.getKeyCode() == KeyEvent.VK_NUMPAD3) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("3");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_4) {
+		if (e.getKeyCode() == KeyEvent.VK_4 || e.getKeyCode() == KeyEvent.VK_NUMPAD4) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("4");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_5) {
+		if (e.getKeyCode() == KeyEvent.VK_5 || e.getKeyCode() == KeyEvent.VK_NUMPAD5) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("5");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_6) {
+		if (e.getKeyCode() == KeyEvent.VK_6 || e.getKeyCode() == KeyEvent.VK_NUMPAD6) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("6");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_7) {
+		if (e.getKeyCode() == KeyEvent.VK_7 || e.getKeyCode() == KeyEvent.VK_NUMPAD7) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("7");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_8) {
+		if (e.getKeyCode() == KeyEvent.VK_8 || e.getKeyCode() == KeyEvent.VK_NUMPAD8) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("8");
 				}
 			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_9) {
+		if (e.getKeyCode() == KeyEvent.VK_9 || e.getKeyCode() == KeyEvent.VK_NUMPAD9) {
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					campos.get(j).addLetra("9");
@@ -351,9 +369,31 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					if (caps) {
-						campos.get(j).addLetra("A");
+						if (circ) {
+							campos.get(j).addLetra("Â");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("Ã");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("Á");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("A");
+						}
 					} else {
-						campos.get(j).addLetra("a");
+						if (circ) {
+							campos.get(j).addLetra("â");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("ã");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("á");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("a");
+						}
 					}
 				}
 			}
@@ -395,9 +435,32 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					if (caps) {
-						campos.get(j).addLetra("E");
+						if (circ) {
+							campos.get(j).addLetra("Ê");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~E");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("É");
+							agudo = false;
+						}
+						{
+							campos.get(j).addLetra("E");
+						}
 					} else {
-						campos.get(j).addLetra("e");
+						if (circ) {
+							campos.get(j).addLetra("ê");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~e");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("é");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("e");
+						}
 					}
 				}
 			}
@@ -439,9 +502,31 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					if (caps) {
-						campos.get(j).addLetra("I");
+						if (circ) {
+							campos.get(j).addLetra("Î");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~I");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("Í");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("I");
+						}
 					} else {
-						campos.get(j).addLetra("i");
+						if (circ) {
+							campos.get(j).addLetra("î");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~i");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("í");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("i");
+						}
 					}
 				}
 			}
@@ -505,9 +590,31 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					if (caps) {
-						campos.get(j).addLetra("O");
+						if (circ) {
+							campos.get(j).addLetra("Ô");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("Õ");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("Ó");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("O");
+						}
 					} else {
-						campos.get(j).addLetra("o");
+						if (circ) {
+							campos.get(j).addLetra("ô");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("õ");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("ó");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("o");
+						}
 					}
 				}
 			}
@@ -571,9 +678,31 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					if (caps) {
-						campos.get(j).addLetra("U");
+						if (circ) {
+							campos.get(j).addLetra("Ú");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~U");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("Ú");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("U");
+						}
 					} else {
-						campos.get(j).addLetra("u");
+						if (circ) {
+							campos.get(j).addLetra("ú");
+							circ = false;
+						} else if (til) {
+							campos.get(j).addLetra("~u");
+							til = false;
+						} else if (agudo) {
+							campos.get(j).addLetra("ú");
+							agudo = false;
+						} else {
+							campos.get(j).addLetra("u");
+						}
 					}
 				}
 			}
@@ -636,7 +765,10 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	}
 
 	public void keyReleased(KeyEvent e) {
-
+		if (e.getKeyCode() == KeyEvent.VK_SHIFT) {
+			shift = false;
+			caps = false;
+		}
 	}
 
 	public void keyTyped(KeyEvent e) {
