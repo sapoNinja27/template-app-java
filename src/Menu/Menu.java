@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Arrays;
 
 import JObjects.Botao;
 import JObjects.CampoDeTexto;
+import JObjects.RadioButton;
 import Main.Main;
 
 /**
@@ -26,12 +26,8 @@ public class Menu {
 	private Botao sair = new Botao(550, 300, 97, 20, "Sair", Color.white, 2, 15);
 	private int mx, my;
 	private boolean pressionou, soltou, moveu;
-	CampoDeTexto camp1 = new CampoDeTexto(0, 200, 200, 15, "exemplo campo 1");
-	CampoDeTexto camp2 = new CampoDeTexto(0, 230, 200, 15, "exemplo campo 2");
-	CampoDeTexto camp3 = new CampoDeTexto(200, 200, 200, 15, "exemplo campo 3");
-	CampoDeTexto camp4 = new CampoDeTexto(200, 230, 200, 15, "exemplo campo 4");
-	CampoDeTexto camp5 = new CampoDeTexto(400, 200, 200, 15, "exemplo campo 5");
-	CampoDeTexto camp6 = new CampoDeTexto(400, 230, 200, 15, "exemplo campo 6");
+	private CampoDeTexto camp = new CampoDeTexto(0, 200, 200, 15, "exemplo campo");
+	private RadioButton check = new RadioButton();
 
 	/**
 	 * Inicia um menu basico
@@ -39,7 +35,8 @@ public class Menu {
 	 * @apiNote objetos dessa pagina são adicionados aqui
 	 */
 	public Menu() {
-		Main.campos.addAll(Arrays.asList(camp1, camp2, camp3, camp4, camp5, camp6));
+		check.setTexto("1", 1,200,200);
+		Main.campos.add(camp);
 		Main.botoes.add(sair);
 	}
 
@@ -144,12 +141,8 @@ public class Menu {
 			g.setColor(Color.DARK_GRAY);
 			g.setFont(new Font("arial", Font.BOLD, 30));
 			g.drawString("Template de menu", 50, 40);
-			camp1.render(g);
-			camp2.render(g);
-			camp3.render(g);
-			camp4.render(g);
-			camp5.render(g);
-			camp6.render(g);
+			camp.render(g);
+			check.render(g);
 			sair.render(g);
 		}
 
