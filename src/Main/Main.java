@@ -28,8 +28,10 @@ import javax.swing.JFrame;
 import JObjects.Botao;
 import JObjects.CampoDeTexto;
 import Menu.Menu;
+
 /**
  * Classe main
+ * 
  * @apiNote Classe iniciará o aplicativo com as configurações basicas
  */
 public class Main extends Canvas implements Runnable, MouseMotionListener, MouseListener, KeyListener {
@@ -41,14 +43,15 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	 */
 	public static List<Botao> botoes = new ArrayList<Botao>();
 	/**
-	 * Para que os campos de texto respondam unitariamente é nescessarios adicionalos aqui
+	 * Para que os campos de texto respondam unitariamente é nescessarios
+	 * adicionalos aqui
 	 */
 	public static List<CampoDeTexto> campos = new ArrayList<CampoDeTexto>();
 	private boolean isRunning = true;
 	/**
 	 * Tamanho da tela
 	 */
-	public static final int WIDTH = 180 * 4,HEIGHT = 90 * 4;
+	public static final int WIDTH = 180 * 4, HEIGHT = 90 * 4;
 	/**
 	 * Escala que vai ser usada na aplicação
 	 */
@@ -57,6 +60,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	public static Random rand;
 	public static Menu menu;
 	private boolean caps;
+
 	/**
 	 * Inicia as propriedades do aplicativo
 	 */
@@ -71,8 +75,9 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		menu = new Menu();
 	}
+
 	/**
-	 * Atualiza a imagem do mouse 
+	 * Atualiza a imagem do mouse
 	 */
 	public void attMouse() {
 		int bot = botoes.size();
@@ -119,6 +124,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		}
 
 	}
+
 	/**
 	 * Monta a tela basica
 	 */
@@ -146,6 +152,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}
+
 	/**
 	 * Inicia a thread
 	 */
@@ -154,6 +161,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		isRunning = true;
 		thread.start();
 	}
+
 	/**
 	 * Finaliza a thread
 	 */
@@ -165,6 +173,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Chama o contrutor do aplicativo
 	 */
@@ -172,6 +181,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		Main app = new Main();
 		app.start();
 	}
+
 	/**
 	 * Chama os metodos de atualização continua
 	 */
@@ -179,8 +189,9 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		menu.tick();
 		attMouse();
 	}
+
 	/**
-	 * Termina a criação da tela e renderiza 
+	 * Termina a criação da tela e renderiza
 	 */
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -199,6 +210,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		g.setFont(new Font("arial", Font.BOLD, 20));
 		bs.show();
 	}
+
 	/**
 	 * Calcula a taxa de atualização do aplicativo
 	 */
@@ -223,8 +235,10 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		}
 		stop();
 	}
+
 	/**
 	 * Define a tecla atual que foi pressionada no teclado
+	 * 
 	 * @apiNote apenas teclas basicas adicionadas
 	 */
 	public void keyPressed(KeyEvent e) {
@@ -634,23 +648,28 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 
 	public void mouseEntered(MouseEvent e) {
 	}
+
 	/**
 	 * Atualiza a posição do mouse quando ele se move
 	 */
 	public void mouseMoved(MouseEvent e) {
-		if(e!=null) {
+		if (e != null) {
 			menu.setMouse(e.getX(), e.getY());
 			menu.mover();
 		}
 	}
+
 	public void mouseExited(MouseEvent e) {
+
 	}
+
 	/**
 	 * Retorna quando o mouse for pressionado
 	 */
 	public void mousePressed(MouseEvent e) {
 		menu.pressionar();
 	}
+
 	/**
 	 * Retorna quando o mouse for solto
 	 */
