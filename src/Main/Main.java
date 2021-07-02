@@ -68,6 +68,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		addKeyListener(this);
 		addMouseListener(this);
 		addMouseMotionListener(this);
+		setFocusTraversalKeysEnabled(false);
 		requestFocus();
 		rand = new Random();
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -253,21 +254,20 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			caps = !caps;
 		}
 		if (e.getKeyCode() == KeyEvent.VK_TAB) {
-			int i = 99;
+			int i = 0;
 			for (int j = 0; j < campos.size(); j++) {
 				if (campos.get(j).clicou()) {
 					i = j;
 				}
 			}
-			System.out.println(i);
 			if (i == campos.size() - 1) {
 				campos.get(i).desclicar();
 				campos.get(0).clicar();
-				i = 99;
+				i = 0;
 			} else {
 				campos.get(i).desclicar();
 				campos.get(i + 1).clicar();
-				i = 99;
+				i = 0;
 			}
 		}
 		if (e.getKeyCode() == KeyEvent.VK_0) {
