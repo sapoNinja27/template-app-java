@@ -638,14 +638,12 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	 * Atualiza a posição do mouse quando ele se move
 	 */
 	public void mouseMoved(MouseEvent e) {
-		menu.setMouse(e.getX(), e.getY());
-		menu.mover();
+		if(e!=null) {
+			menu.setMouse(e.getX(), e.getY());
+			menu.mover();
+		}
 	}
-	/**
-	 * Previne que a aplicação quebre quando o mouse sai da tela
-	 */
 	public void mouseExited(MouseEvent e) {
-		menu.setMouse(0,0);
 	}
 	/**
 	 * Retorna quando o mouse for pressionado
