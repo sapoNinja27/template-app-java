@@ -11,10 +11,9 @@ import java.util.List;
 import Main.Main;
 
 /**
- * Tabela
+ * Botão de radio
  * 
- * @apiNote Recebe uma lista de textos e os mostra na tela com uma tabela
- *          simples
+ * @apiNote Recebe uma lista de textos e os mostra na tela com um botão para selecionar, apenas um pode ser selecionado por vez
  * @apiNote Configurações do objeto são feitas no init() da pagina
  */
 public class RadioButton {
@@ -27,10 +26,7 @@ public class RadioButton {
 	private int selecionado;
 
 	/**
-	 * Cria uma tabela
-	 * 
-	 * @param x : posição horizontal
-	 * @param y : posição vertical
+	 * Cria um objeto vazio
 	 */
 	public RadioButton() {
 
@@ -41,50 +37,55 @@ public class RadioButton {
 	 * 
 	 * @param index : index da lista (numero tem que ser maior que 0)
 	 * @apiNote : o ordenamento dos valores respeita a ordenação comum, então o
-	 *          primeiro valor da tabela vai ser o index 1, e não o 0
+	 *          primeiro valor vai ser o index 1, e não o 0
 	 */
 	public String getTexto(int index) {
 		return text.get(index - 1);
 	}
 
 	/**
+	 * Retorna o texto selecionado
+	 */
+	public String getTexto() {
+		return text.get(selecionado);
+	}
+
+	/**
 	 * Retorna o id da posição indicada
-	 * 
-	 * @apiNote : Ideal para usar com tabelas de classes, onde o ordenamento por id
-	 *          da classe vai ser diferente do ordenamento de listas da tabela
 	 */
 	public Integer getSelecionado() {
 		return indexes.get(selecionado);
 	}
 
 	/**
-	 * Adiciona um valor de texto a tabela
+	 * Adiciona um valor de texto
 	 * 
-	 * @param text : texto que vai aparecer na tabela
-	 * @param id   : recebe um identificador para o objeto recebido
-	 * @apiNote feito para adicionar manualmente os valores
+	 * @param text texto 
+	 * @param id   recebe um identificador para o objeto recebido
+	 * @param x    recebe a posição x do objeto
+	 * @param y    recebe a posição y do objeto
 	 */
 	public void setTexto(String text, int id, int x, int y) {
 		this.text.add(text);
 		this.indexes.add(id);
 		this.x.add(x);
 		this.y.add(y);
-		if(clicou.size()==0) {
+		if (clicou.size() == 0) {
 			this.clicou.add(true);
-		}else {
+		} else {
 			this.clicou.add(false);
 		}
 	}
 
 	/**
-	 * Retorna se o mouse esta em cima da tabela
+	 * Retorna se o mouse esta em cima de um dos objetos
 	 */
 	public boolean mouseOver() {
 		return mouseOver;
 	}
 
 	/**
-	 * Configura qual obj da tabela foi selecionado
+	 * Configura qual foi selecionado
 	 */
 	public void clicou() {
 		for (int i = 0; i < clicou.size(); i++) {
