@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 
+import JObjects.ArvoreHabilidade;
 import JObjects.Botao;
 import JObjects.CampoDeTexto;
 import JObjects.RadioButton;
@@ -28,9 +30,8 @@ public class Menu {
 	private boolean pressionou, soltou, moveu;
 	private CampoDeTexto camp = new CampoDeTexto(0, 200, 200, 15, "exemplo campo");
 	private RadioButton check = new RadioButton();
+	private ArvoreHabilidade arv = new ArvoreHabilidade(200, 200, 20, 20);
 
-	int x = 200;
-	int y = 200;
 	boolean aumentandoY, aumentandoX;
 	int difX, difY;
 	boolean arrastando;
@@ -42,6 +43,10 @@ public class Menu {
 	 */
 	public Menu() {
 		check.setTexto("1", 1, 200, 200);
+		arv.setHabilidade("fogo", 1);
+		arv.setHabilidade("lançar chama", 2);
+		arv.setHabilidade("escudo", 2);
+		arv.setHabilidade("lança de fogo", 3);
 		Main.campos.add(camp);
 		Main.botoes.add(sair);
 	}
@@ -69,12 +74,6 @@ public class Menu {
 		soltou = true;
 	}
 
-	public void checarMoved() {
-		if(moveu) {
-			
-		}
-	}
-
 	/**
 	 * Define o evento de pressionar
 	 */
@@ -82,11 +81,15 @@ public class Menu {
 		pressionou = true;
 		moveu = false;
 	}
-
+	/**
+	 * Define o evento de arrastando
+	 */
 	public void arrastar() {
 		arrastando = true;
 	}
-
+	public boolean arrastando() {
+		return arrastando;
+	}
 	/**
 	 * Retorna se o mouse foi pressionado
 	 */
@@ -160,15 +163,6 @@ public class Menu {
 		g.setColor(beje);
 		g.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		g.setColor(Color.black);
-		if (arrastando) {
-			x += difX * 3;
-			y += difY * 3;
-			difX=0;
-			difY=0;
-			arrastando=false;
-		}
-		g.drawOval((x), y, 50, 50);
-		g.drawOval((x + 200), y, 50, 50);
 		if (state.equals("Menu")) {
 			g.setColor(Color.DARK_GRAY);
 			g.setFont(new Font("arial", Font.BOLD, 30));
@@ -176,6 +170,7 @@ public class Menu {
 //			render do campo e render do radiobutton
 //			camp.render(g);
 //			check.render(g);
+			arv.render(g);
 			sair.render(g);
 		}
 

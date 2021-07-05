@@ -814,7 +814,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	}
 
 	public void mouseDragged(MouseEvent e) {
-		menu.setMouse(e.getX(), e.getY());
-		menu.arrastar();
+//		menu.setMouse(e.getX(), e.getY());
+//		menu.arrastar();
 	}
 }
