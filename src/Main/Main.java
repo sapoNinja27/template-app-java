@@ -25,6 +25,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+import Graficos.Spritesheet;
 import JObjects.Botao;
 import JObjects.CampoDeTexto;
 import Menu.Menu;
@@ -59,6 +60,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	private BufferedImage image;
 	public static Random rand;
 	public static Menu menu;
+	private Spritesheet mouse;
 	private boolean caps;
 	private boolean til;
 	private boolean agudo;
@@ -74,6 +76,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		addMouseMotionListener(this);
 		setFocusTraversalKeysEnabled(false);
 		requestFocus();
+		mouse=new Spritesheet("/cursor.png");
 		rand = new Random();
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		initFrame();
@@ -101,7 +104,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			if (camp == campos.size()) {
 				try {
 					Toolkit toolkit = Toolkit.getDefaultToolkit();
-					Image image = toolkit.getImage(getClass().getResource("/cursorStandart.png"));
+					Image image = mouse.getSprite(0,0,32,32);
 					Cursor c = toolkit.createCustomCursor(image, new Point(0, 0), "img");
 					frame.setCursor(c);
 				} catch (Exception e) {
@@ -110,7 +113,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 			} else {
 				try {
 					Toolkit toolkit = Toolkit.getDefaultToolkit();
-					Image image = toolkit.getImage(getClass().getResource("/cursorBar.png"));
+					Image image = mouse.getSprite(32*2,0,32,32);
 					Cursor c = toolkit.createCustomCursor(image, new Point(0, 0), "img");
 					frame.setCursor(c);
 				} catch (Exception e) {
@@ -120,7 +123,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 		} else {
 			try {
 				Toolkit toolkit = Toolkit.getDefaultToolkit();
-				Image image = toolkit.getImage(getClass().getResource("/cursorHand.png"));
+				Image image = mouse.getSprite(32,0,32,32);
 				Cursor c = toolkit.createCustomCursor(image, new Point(0, 0), "img");
 				frame.setCursor(c);
 			} catch (Exception e) {
@@ -799,6 +802,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	 * Retorna quando o mouse for pressionado
 	 */
 	public void mousePressed(MouseEvent e) {
+		menu.setMouse(e.getX(), e.getY());
 		menu.pressionar();
 	}
 
@@ -811,6 +815,7 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	}
 
 	public void mouseDragged(MouseEvent e) {
-
+		menu.setMouse(e.getX(), e.getY());
+		menu.arrastar();
 	}
 }

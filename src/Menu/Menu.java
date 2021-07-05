@@ -29,13 +29,21 @@ public class Menu {
 	private CampoDeTexto camp = new CampoDeTexto(0, 200, 200, 15, "exemplo campo");
 	private RadioButton check = new RadioButton();
 
+	int tempo=0,frames=0;
+	int x = 200;
+	int y = 200;
+	boolean aumentandoY, aumentandoX;
+	int difX, difY;
+	int odifX, odifY;
+	boolean arrastando;
+
 	/**
 	 * Inicia um menu basico
 	 * 
 	 * @apiNote objetos dessa pagina são adicionados aqui
 	 */
 	public Menu() {
-		check.setTexto("1", 1,200,200);
+		check.setTexto("1", 1, 200, 200);
 		Main.campos.add(camp);
 		Main.botoes.add(sair);
 	}
@@ -63,12 +71,22 @@ public class Menu {
 		soltou = true;
 	}
 
+	public void checarMoved() {
+		if(moveu) {
+			
+		}
+	}
+
 	/**
 	 * Define o evento de pressionar
 	 */
 	public void pressionar() {
 		pressionou = true;
 		moveu = false;
+	}
+
+	public void arrastar() {
+		arrastando = true;
 	}
 
 	/**
@@ -96,6 +114,14 @@ public class Menu {
 	 * Configura a posição do mouse
 	 */
 	public void setMouse(int mx, int my) {
+		if (this.mx == mx && this.my == my) {
+			arrastando = false;
+		}
+		odifX = difX;
+		odifY = difY;
+		
+		difX = (mx - this.mx);
+		difY = (my - this.my);
 		this.mx = mx;
 		this.my = my;
 	}
@@ -118,6 +144,15 @@ public class Menu {
 	 * Configura as ações dos objetos dentro do menu root
 	 */
 	public void tick() {
+		frames++;
+		if(frames>=1) {
+			frames=0;
+			tempo++;
+			if(tempo>=2) {
+				arrastando=false;
+				tempo=0;
+			}
+		}
 		if (sair.clicou()) {
 			System.exit(1);
 		}
@@ -137,12 +172,22 @@ public class Menu {
 		beje = new Color(211, 228, 255);
 		g.setColor(beje);
 		g.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
+		g.setColor(Color.black);
+		if (arrastando) {
+			x += difX * 2;
+			y += difY * 2;
+		} else {
+
+		}
+		g.drawOval((x), y, 50, 50);
+		g.drawOval((x + 200), y, 50, 50);
 		if (state.equals("Menu")) {
 			g.setColor(Color.DARK_GRAY);
 			g.setFont(new Font("arial", Font.BOLD, 30));
 			g.drawString("Template de menu", 50, 40);
-			camp.render(g);
-			check.render(g);
+//			render do campo e render do radiobutton
+//			camp.render(g);
+//			check.render(g);
 			sair.render(g);
 		}
 
