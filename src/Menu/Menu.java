@@ -29,12 +29,10 @@ public class Menu {
 	private CampoDeTexto camp = new CampoDeTexto(0, 200, 200, 15, "exemplo campo");
 	private RadioButton check = new RadioButton();
 
-	int tempo=0,frames=0;
 	int x = 200;
 	int y = 200;
 	boolean aumentandoY, aumentandoX;
 	int difX, difY;
-	int odifX, odifY;
 	boolean arrastando;
 
 	/**
@@ -116,10 +114,7 @@ public class Menu {
 	public void setMouse(int mx, int my) {
 		if (this.mx == mx && this.my == my) {
 			arrastando = false;
-		}
-		odifX = difX;
-		odifY = difY;
-		
+		}		
 		difX = (mx - this.mx);
 		difY = (my - this.my);
 		this.mx = mx;
@@ -144,15 +139,7 @@ public class Menu {
 	 * Configura as ações dos objetos dentro do menu root
 	 */
 	public void tick() {
-		frames++;
-		if(frames>=1) {
-			frames=0;
-			tempo++;
-			if(tempo>=2) {
-				arrastando=false;
-				tempo=0;
-			}
-		}
+		
 		if (sair.clicou()) {
 			System.exit(1);
 		}
@@ -174,10 +161,11 @@ public class Menu {
 		g.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 		g.setColor(Color.black);
 		if (arrastando) {
-			x += difX * 2;
-			y += difY * 2;
-		} else {
-
+			x += difX * 3;
+			y += difY * 3;
+			difX=0;
+			difY=0;
+			arrastando=false;
 		}
 		g.drawOval((x), y, 50, 50);
 		g.drawOval((x + 200), y, 50, 50);

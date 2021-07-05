@@ -802,7 +802,6 @@ public class Main extends Canvas implements Runnable, MouseMotionListener, Mouse
 	 * Retorna quando o mouse for pressionado
 	 */
 	public void mousePressed(MouseEvent e) {
-		menu.setMouse(e.getX(), e.getY());
 		menu.pressionar();
 	}
 
